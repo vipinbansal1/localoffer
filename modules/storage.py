@@ -1,7 +1,10 @@
 import sqlite3
 from datetime import datetime
 
+import os
+os.makedirs("data", exist_ok=True)
 DB_FILE = "data/messages.db"
+
 
 def init_db():
     conn = sqlite3.connect(DB_FILE)

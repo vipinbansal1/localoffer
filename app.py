@@ -38,12 +38,13 @@ if uploaded_file:
                 st.text(f"{m['phone']} → {m['message']}")
 
         # --- Step 4: Send Messages ---
-        if "messages" in st.session_state:
+        if st.session_state.get("messages"):
             st.header("Step 3: Send Messages")
             dry_run = st.checkbox("Dry Run (do not actually send)", value=True)
             if st.button("Send Now"):
                 send_whatsapp_messages(st.session_state["messages"], dry_run=dry_run)
                 st.success("✅ Messages processed. Check logs below.")
+
 
     except Exception as e:
         st.error(f"Error: {e}")
